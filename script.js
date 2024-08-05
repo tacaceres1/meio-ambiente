@@ -1,24 +1,13 @@
+import {aleatorio} from './aleatorio.js';
+import {perguntas} from './perguntas.js';
+
 const caixaPrincipal = document.querySelector(".caixa-principal");
 const caixaPerguntas = document.querySelector(".caixa-perguntas");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
 
-const perguntas = [
-    {
-        enunciado: "Como podemos reduzir o consumo de plástico descartável em nossas comunidades?",
-        alternativas: [
-            {
-                texto: "a)Não implementar programas de reciclagem mais abrangentes e acessíveis, e não incentivar a separação correta dos resíduos plásticos. ",
-                afirmacao: "Errado!"
-            },
-            {
-                texto: "b)Promover o uso de produtos reutilizáveis, como sacolas de pano e garrafas de água de metal, por meio de campanhas educativas e incentivos fiscais. ",
-                afirmacao: "Correto!"
-            }
-        ]
-    },
-];
+
 
 
 let atual = 0;
@@ -46,7 +35,7 @@ function mostraAlternativas(){
 }
 
 function respostaSelecionada(opcaoSelecionada) {
-    const afirmacoes = opcaoSelecionada.afirmacao;
+    const afirmacoes = aleatorio(opcaoSelecionada.afirmacao);
     historiaFinal += afirmacoes + "";
     atual++;
     mostraPergunta();
@@ -58,6 +47,10 @@ function mostraResultado() {
     caixaAlternativas.textContent = "";
 }
 
+
+
 mostraPergunta();
+
+
 
 
